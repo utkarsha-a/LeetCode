@@ -5,17 +5,32 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def constructMaximumBinaryTree(self, nums: List[int]) -> TreeNode:
-        nodes = []
-        for num in nums:
-            node = TreeNode(num)
-            while nodes and nodes[-1].val < num:
-                node.left = nodes.pop()
+    def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
+        if not nums:
+            return None
+        max_idx = nums.index(max(nums))
+        root = TreeNode(nums[max_idx])
+        root.left = self.constructMaximumBinaryTree(nums[:max_idx])
+        root.right = self.constructMaximumBinaryTree(nums[max_idx+1:])
+        return root
 
-            if nodes:
-                nodes[-1].right = node
+def tree_to_list(root):
+    if not root:
+        return []
+    queue = [root]
+    res = []
 
-            nodes.append(node)
-
-        return nodes[0]
+    while queue:
+        node = queue.pop(0)
+        if node:
+            res.append(node.val)
+            queue.append(node.left)
+            queue.append(node.right)
+        else:
+            res.append(None)
+    
+    while res and res[-1] is None:
+        res.pop()
+    return res
+     
         
