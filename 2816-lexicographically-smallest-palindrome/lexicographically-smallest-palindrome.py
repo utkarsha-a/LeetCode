@@ -1,8 +1,6 @@
 class Solution:
     def makeSmallestPalindrome(self, s: str) -> str:
-        arr = []
-        for i in s:
-            arr.append(i)
+        arr = list(s)
         l = 0
         r = len(s)-1
         while l<r:
