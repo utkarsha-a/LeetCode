@@ -1,4 +1,9 @@
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
-        arr.sort(key = lambda num : (num.bit_count(),num))
+        def sort_key(num):
+            bit_count = bin(num).count('1')
+            return (bit_count, num)
+
+        arr.sort(key=sort_key)
+
         return arr
