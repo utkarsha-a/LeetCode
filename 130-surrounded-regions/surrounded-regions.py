@@ -15,9 +15,15 @@ class Solution:
             capture(r,c-1)
 
         for r in range(rows):
-            for c in range(cols):
-                if (board[r][c] == 'O') and (r in [0, rows-1] or c in [0, cols-1]):
-                    capture (r,c)
+            if board[r][0] == 'O':
+                capture(r,0)
+            if board[r][cols-1] =='O':
+                capture(r,cols-1)
+        for c in range(cols):
+            if board[0][c] == 'O':
+                capture(0,c)
+            if board[rows-1][c] == 'O':
+                capture(rows-1,c)
 
         for r in range(rows):
             for c in range(cols):
