@@ -5,15 +5,13 @@ class Solution:
 
         prev = intervals[0]
 
-        for i in intervals[1:]:
-            if i[0] <= prev[1]:
-                prev[1] = max(prev[1], i[1])
+        for interval in intervals[1:]:
+            if interval[0]<=prev[1]:
+                prev[1] = max(prev[1], interval[1])
             else:
                 merged.append(prev)
-                prev = i
+                prev = interval
 
         merged.append(prev)
 
         return merged
-
-        
