@@ -1,10 +1,29 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
-        hash = {}
-        l = []
+        if not nums:
+            return []
+        cnt1, cnt2 = 0, 0
+        can1, can2 = None, None
         for n in nums:
-            hash[n] = hash.get(n, 0)+1
-            if hash[n]>len(nums)//3:
-                if n not in l:
-                    l.append(n)
-        return l
+            if n == can1:
+                cnt1 += 1
+            elif n == can2:
+                cnt2 += 1
+            elif cnt1 == 0:
+                can1 = n
+                cnt1 += 1
+            elif cnt2 == 0:
+                can2 = n
+                cnt2 += 1
+            else:
+                cnt1 -= 1
+                cnt2 -= 1
+        
+        res = []
+        for can in [can1, can2]:
+            if can is not None and nums.count(can)>len(nums)//3:
+                res.append(can)
+        return res
+
+
+        
