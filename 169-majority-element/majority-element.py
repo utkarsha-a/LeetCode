@@ -1,9 +1,12 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        hash = {}
-
-        for num in nums:
-            hash[num] = hash.get(num,0)+1
-            if hash[num] > len(nums) // 2:
-                return num
+        res = maj = 0
+        for n in nums:
+            if maj==0:
+                res =n
+            if n==res:
+                maj+=1
+            else:
+                maj-=1
+        return res
         
