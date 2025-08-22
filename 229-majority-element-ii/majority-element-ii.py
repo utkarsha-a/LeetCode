@@ -2,14 +2,9 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         hash = {}
         l = []
-
-        for num in nums:
-            hash[num] = hash.get(num, 0)+1
-
-        t = len(nums)//3
-
-        for num, count in hash.items():
-            if count>t:
-                l.append(num)
-
+        for n in nums:
+            hash[n] = hash.get(n, 0)+1
+            if hash[n]>len(nums)//3:
+                if n not in l:
+                    l.append(n)
         return l
