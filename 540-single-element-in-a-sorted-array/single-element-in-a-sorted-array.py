@@ -1,9 +1,6 @@
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        hash = {}
-        for n in nums:
-            hash[n] = hash.get(n,0)+1
-
-        for n in nums:
-            if hash[n] == 1:
-                return n        
+        for i in range(0, len(nums)-1, 2):
+            if nums[i] != nums[i+1]:
+                return nums[i]
+        return nums[-1]       
