@@ -10,6 +10,7 @@ class Solution:
             if r==n:
                 copy = ["".join(row) for row in board]
                 res.append(copy)
+                return
 
             for c in range(n):
                 if c in col or (r+c) in posD or (r-c) in negD:
