@@ -1,20 +1,26 @@
 class Solution:
     def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
         n = len(grid)
-        size = n*n
+        nsq = n*n
 
-        count = [0]*(size+1)
+        expected = nsq*(nsq+1)//2
+        expectedsq = nsq*(nsq+1)*(2*nsq+1)//6
+
+        actual = 0
+        actualsq = 0
 
         for i in range(n):
             for j in range(n):
-                count[grid[i][j]] += 1
-        
-        a, b = -1, -1
+                actual += grid[i][j]
+                actualsq += grid[i][j]*grid[i][j]
 
-        for num in range(1, size+1):
-            if count[num]==2:
-                a = num
-            elif count[num]==0:
-                b = num
-        
-        return [a,b]
+        diff = actual-expected
+
+        diffsq = actualsq-expectedsq
+
+        summ = diffsq//diff
+
+        a = (summ+diff)//2
+        b = (summ-diff)//2
+
+        return [a, b]
