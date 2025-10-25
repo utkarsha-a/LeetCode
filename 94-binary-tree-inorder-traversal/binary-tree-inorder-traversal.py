@@ -31,9 +31,11 @@ class Solution:
                 while prev.right is not None and prev.right!=cur:
                     prev = prev.right
                 if prev.right is None:
+                    #creating the thread
                     prev.right = cur
                     cur = cur.left
                 else:
+                    # deleting the thread
                     prev.right = None
                     res.append(cur.val)
                     cur = cur.right
