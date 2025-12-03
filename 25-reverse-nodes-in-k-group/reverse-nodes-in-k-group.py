@@ -4,25 +4,29 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverse(self, start,end):
-        prev = None
-        curr = start
-        while curr!= end:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-        return prev
-
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        count = 0
-        temp = head
-        while temp and count < k:
-            temp = temp.next
-            count += 1
-        if count<k:
-            return head
+        if not head:
+            return None
+        
+        tail = head
+        for i in range(k):
+            if not tail:
+                return head
+            tail = tail.next
 
-        new_head = self.reverse(head, temp)
-        head.next = self.reverseKGroup(temp, k)
-        return new_head    
+        def rev(cur, end):
+            node  = None
+            while cur!=end:
+                nxt = cur.next
+                cur.next = node
+                node = cur
+                cur = nxt
+            return node
+
+        new_head = rev(head, tail)
+        head.next = self.reverseKGroup(tail, k)
+
+        return new_head
+
+        
+        
