@@ -17,3 +17,6 @@ class Solution:
             return True
         else:
             return False
+
+        #O(n*m)
+        #O(m)
