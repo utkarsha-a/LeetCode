@@ -10,6 +10,9 @@ class Solution:
 
         return maxsum/k
 
+        #O(n)
+        #O(1)
+
 
 
         
