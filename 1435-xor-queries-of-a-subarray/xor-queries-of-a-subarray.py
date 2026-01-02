@@ -13,4 +13,4 @@ class Solution:
             else:
                 ans.append(pre[r] ^ pre[l-1])
 
-        return ans        
+        return ans    
