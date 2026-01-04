@@ -13,7 +13,7 @@ class Solution:
             l = dfs(node.left)
             r = dfs(node.right)
             nonlocal res
-            res = max(res, r+l)
+            res = max(res, l+r)
             return max(l,r)+1
         dfs(root)
         return res
