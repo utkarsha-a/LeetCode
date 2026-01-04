@@ -10,13 +10,11 @@ class Solution:
 
         def build(preorder, inorder):
             if inorder:
-                idx = inorder.index(preorder.popleft())
-                root = TreeNode(inorder[idx])
-
-                root.left = build(preorder, inorder[:idx])
-                root.right = build(preorder, inorder[idx+1:])
+                i = inorder.index(preorder.popleft())
+                root = TreeNode(inorder[i])
+                root.left = build(preorder, inorder[:i])
+                root.right = build(preorder, inorder[i+1:])
 
                 return root
 
-        return build(preorder, inorder)
-        
+        return build(preorder, inorder) 
