@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        '''
         preorder = deque(preorder)
 
         def build(preorder, inorder):
@@ -18,3 +19,22 @@ class Solution:
                 return root
 
         return build(preorder, inorder) 
+        #O(n^2)
+        #O(n^2)
+        '''
+        mp = {}
+        for i in range(len(inorder)):
+            mp[inorder[i]] = i
+        preorder = deque(preorder)
+
+        def build(start, end):
+            if start>end:
+                return None
+            root = TreeNode(preorder.popleft())
+            mid = mp[root.val]
+            root.left = build(start, mid-1)
+            root.right = build(mid+1, end)
+
+            return root
+        
+        return build(0, len(preorder)-1)
