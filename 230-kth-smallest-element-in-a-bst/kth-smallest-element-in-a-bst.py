@@ -6,17 +6,33 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        st = []
-        curr = root
+        stack = []
+        cur = root
         cnt = 0
-
-        while curr or st:
-            while curr:
-                st.append(curr)
-                curr = curr.left
-            curr = st.pop()
-            cnt+=1
-            if cnt == k:
-                return curr.val
-            curr = curr.right
+        while stack or cur:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            cnt += 1
+            if cnt==k:
+                return cur.val
+            else:
+                cur = cur.right
+        #O(n)
+        #O(n)
         
+        '''
+        store and sort and take kth element
+        O(n)+O(nlogn)
+        O(n)
+        '''
+
+        '''
+        perform inorder traversal and find kth element
+        O(n)
+        O(n)
+        '''
+        
+        #O(n)
+        #O(n)
