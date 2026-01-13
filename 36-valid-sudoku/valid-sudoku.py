@@ -1,17 +1,17 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        r = defaultdict(set)
-        c = defaultdict(set)
-        b = defaultdict(set)
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        box = defaultdict(set)
+
         for i in range(9):
             for j in range(9):
-                num = board[i][j]
-                if num == '.':
+                if board[i][j] == ".":
                     continue
-                bi = (i//3)*3 + (j//3)
-                if num in r[i] or num in c[j] or num in b[bi]:
+                if board[i][j] in rows[i] or board[i][j] in cols[j] or board[i][j] in box[(i//3, j//3)]:
                     return False
-                r[i].add(num)
-                c[j].add(num)
-                b[bi].add(num) 
-        return True      
+                cols[j].add(board[i][j])
+                rows[i].add(board[i][j])
+                box[(i//3, j//3)].add(board[i][j])
+
+        return True        
