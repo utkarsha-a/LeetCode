@@ -2,15 +2,16 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
+        
+        mp = {}
+        for ch in s:
+            mp[ch] = mp.get(ch, 0) + 1
 
-        hash = {}
-        for char in s:
-            hash[char] = hash.get(char, 0) + 1
-
-        for char in t:
-            if char not in hash or hash[char] == 0:
+        for ch in t:
+            if ch not in mp or mp[ch]==0:
                 return False
-            hash[char] -= 1
-
+            mp[ch] -= 1
+        
         return True
+
         
