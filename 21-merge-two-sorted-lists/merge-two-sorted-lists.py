@@ -21,5 +21,9 @@ class Solution:
             curr.next = l1
         else:
             curr.next = l2
+        
+        return dummy.next
 
-        return dummy.next        
+
+
+        
