@@ -28,4 +28,6 @@ class Solution:
                 return False
         return True
             
+        #O(V+E)
+        #O(V+E)
         
