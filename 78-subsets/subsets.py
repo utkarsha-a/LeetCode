@@ -2,17 +2,17 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
         sub = []
-        
-        def dfs(i):
-            if i>=len(nums):
-                res.append(sub[:])
-                return res
+        n = len(nums)        
 
-            sub.append(nums[i])
-            dfs(i+1)
+        def helper(idx):
+            if idx==n:
+                res.append(sub[:])
+                return
+            sub.append(nums[idx])
+            helper(idx+1)
 
             sub.pop()
-            dfs(i+1)
-        
-        dfs(0)
+            helper(idx+1)
+
+        helper(0)
         return res
