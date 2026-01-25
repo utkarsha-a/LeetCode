@@ -1,29 +1,29 @@
 class Solution:
-    @cache
+    def isPalindrome(self, s, i, j):
+        while i<=j:
+            if s[i] != s[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
+
     def partition(self, s: str) -> List[List[str]]:
         res = []
         part = []
+        n = len(s)
 
-        def helper(i):
-            if i>=len(s):
+        def helper(idx):
+            if idx >= n:
                 res.append(part[:])
-                return
-            for j in range(i, len(s)):
-                if self.isPalindrome(s, i, j):
-                    part.append(s[i:j+1])
+                return 
+            for j in range(idx, n):
+                if self.isPalindrome(s, idx, j):
+                    part.append(s[idx:j+1])
                     helper(j+1)
                     part.pop()
 
         helper(0)
         return res
-
-    def isPalindrome(self, s, l, r):
-        while l<r:
-            if s[l]!=s[r]:
-                return False
-            l+=1
-            r-=1
-        return True
 
         '''
         if not s:
