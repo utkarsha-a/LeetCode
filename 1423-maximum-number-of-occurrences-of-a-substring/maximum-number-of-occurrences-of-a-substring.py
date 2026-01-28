@@ -24,3 +24,5 @@ class Solution:
                 res = max(res, freq[substr])
 
         return res
+        #O(n)
+        #O(n)
