@@ -29,17 +29,17 @@ class LRUCache:
     
     def remove(self, node):
         prev = node.prev
-        nex = node.next
-        prev.next = nex
-        nex.prev = prev
+        next = node.next
+        prev.next = next
+        next.prev = prev
 
     def insert(self, node):
         prev = self.latest.prev
-        nex = self.latest
+        next = self.latest
         prev.next = node
-        nex.prev = node
+        next.prev = node
         node.prev = prev
-        node.next = nex        
+        node.next = next        
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
