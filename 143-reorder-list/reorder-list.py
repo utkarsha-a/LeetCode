@@ -8,13 +8,13 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        fast = head
         slow = head
+        fast = head
 
         while fast and fast.next:
-            fast = fast.next.next
             slow = slow.next
-
+            fast = fast.next.next
+        
         second = slow.next
         slow.next = None
         node = None
@@ -27,7 +27,6 @@ class Solution:
 
         first = head
         second = node
-
         while second:
             temp1, temp2 = first.next, second.next
             first.next, second.next = second, temp1
