@@ -9,6 +9,7 @@ class Solution:
         def valid(node, minn, maxx):
             if not node:
                 return True
+                
             if (node.val <= minn) or (node.val >= maxx):
                 return False
             return valid(node.left, minn, node.val) and valid(node.right, node.val, maxx)
