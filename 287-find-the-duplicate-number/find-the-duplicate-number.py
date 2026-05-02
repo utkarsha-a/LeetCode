@@ -6,9 +6,9 @@ class Solution:
         while True:
             slow = nums[slow]
             fast = nums[nums[fast]]
-            if slow == fast:
+            if slow==fast:
                 break
-        
+
         slow2 = nums[0]
         while slow != slow2:
             slow = nums[slow]
