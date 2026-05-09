@@ -3,7 +3,7 @@ class Solution:
         res = []
         sub = []
         n = len(candidates)
-        
+
         def helper(idx, tot):
             if tot==target:
                 res.append(sub[:])
@@ -13,8 +13,9 @@ class Solution:
 
             sub.append(candidates[idx])
             helper(idx, tot+candidates[idx])
+
             sub.pop()
             helper(idx+1, tot)
-        
+
         helper(0,0)
         return res
