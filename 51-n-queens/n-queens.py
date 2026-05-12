@@ -1,9 +1,9 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
+        res = []
         col = set()
         pos = set()
-        neg = set ()
-        res = []
+        neg = set()
         board = [["."]*n for i in range(n)]
 
         def backtrack(r):
@@ -11,11 +11,11 @@ class Solution:
                 copy = ["".join(row) for row in board]
                 res.append(copy)
                 return
-
+            
             for c in range(n):
                 if c in col or (r+c) in pos or (r-c) in neg:
                     continue
-                
+
                 col.add(c)
                 pos.add(r+c)
                 neg.add(r-c)
@@ -30,4 +30,7 @@ class Solution:
 
         backtrack(0)
         return res
+
+    #O(N!)
+    #O(N^2)
 
