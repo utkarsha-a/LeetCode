@@ -3,6 +3,31 @@ class Solution:
         adj = defaultdict(list)
         for u, v in prerequisites:
             adj[u].append(v)
+        
+        visited = set()
+        def dfs(crs):
+            if crs in visited:
+                return False
+            if adj[crs] == []:
+                return True
+            
+            visited.add(crs)
+            for pre in adj[crs]:
+                if not dfs(pre):
+                    return False
+            visited.remove(crs)
+            adj[crs] = []
+            return True
+        
+        for crs in range(numCourses):
+            if not dfs(crs):
+                return False
+        return True
+        
+        '''
+        adj = defaultdict(list)
+        for u, v in prerequisites:
+            adj[u].append(v)
 
         unvisited = 0
         visiting = 1
@@ -30,4 +55,5 @@ class Solution:
             
         #O(V+E)
         #O(V+E)
+        '''
         
