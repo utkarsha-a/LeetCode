@@ -7,6 +7,23 @@ class Solution:
         for r in range(m):
             row_min.add(min(matrix[r]))
 
+        for c in range(n):
+            cur_max = matrix[0][c]
+            for r in range(m):
+                cur_max = max(cur_max, matrix[r][c])
+            if cur_max in row_min:
+                res.append(cur_max)
+
+        return res
+
+        '''
+        m, n = len(matrix), len(matrix[0])
+        res = []
+
+        row_min = set()
+        for r in range(m):
+            row_min.add(min(matrix[r]))
+
         col_max = set()
         for c in range(n):
             cur_max = matrix[0][c]
@@ -20,4 +37,5 @@ class Solution:
                 res.append(n)
 
         return res
+        '''
 
